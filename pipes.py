@@ -1,53 +1,137 @@
+import os
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.pyplot import gcf, figure
+import pandas as pd
+import seaborn as sns
+from sklearn import tree
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import GradientBoostingClassifier
+import mglearn
+%matplotlib inline
 
-from sklearn.datasets import load_iris
-from sklearn.tree import DecisionTreeClassifier, plot_tree
+data = pd.read_csv(r'/media/nikita/ML/pipes/ML_pipes/info/Informatsia.csv')
+#data = pd.read_csv(r'H:/Machine_learning/info/Informatsia.csv')
 
-# Parameters
-n_classes = 3
-plot_colors = "ryb"
-plot_step = 0.02
+pipes = pd.DataFrame(data)
 
-# Load data
-iris = load_iris()
+pipes_for_lin_reg = pipes.head(1200).tail(300).append(pipes.tail(1200).head(300))
 
-for pairidx, pair in enumerate([[0, 1], [0, 2], [0, 3],
-                                [1, 2], [1, 3], [2, 3]]):
-    # We only take the two corresponding features
-    X = iris.data[:, pair]
-    y = iris.target
+pipes = pipes.head(1200).append(pipes.tail(1200))
 
-    # Train
-    clf = DecisionTreeClassifier().fit(X, y)
+map_to_int = {name: n for n, name in enumerate(pipes["Вид прокладки тепловой сети"].unique())}
+pipes["Вид прокладки тепловой сети"] = pipes["Вид прокладки тепловой сети"].replace(map_to_int)
+pipes_for_lin_reg["Вид прокладки тепловой сети"] = pipes_for_lin_reg["Вид прокладки тепловой сети"].replace(map_to_int)
+def encode_target(pipes, target_column):
+    pipes_mod = pipes.copy()
+    targets = pipes[target_column].unique()
+    map_to_int = {name: n for n, name in enumerate(targets)}
+    pipes_mod["Target"] = pipes_mod[target_column].replace(map_to_int)
+    
+    return(pipes_mod, targets)
 
-    # Plot the decision boundary
-    plt.subplot(2, 3, pairidx + 1)
+del pipes['Unnamed: 25']
+del pipes['Unnamed: 26']
+del pipes['Unnamed: 27']
+del pipes_for_lin_reg['Unnamed: 25']
+del pipes_for_lin_reg['Unnamed: 26']
+del pipes_for_lin_reg['Unnamed: 27']
 
-    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, plot_step),
-                         np.arange(y_min, y_max, plot_step))
-    plt.tight_layout(h_pad=0.5, w_pad=0.5, pad=2.5)
+pipes2, targets = encode_target(pipes, "Аварийность")
+pipes_for_lin_reg2, targets2 = encode_target(pipes_for_lin_reg, "Аварийность")
 
-    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
-    Z = Z.reshape(xx.shape)
-    cs = plt.contourf(xx, yy, Z, cmap=plt.cm.RdYlBu)
+for i in range(len(pipes.columns)):
+   print(i, ":", pipes.columns[i])
 
-    plt.xlabel(iris.feature_names[pair[0]])
-    plt.ylabel(iris.feature_names[pair[1]])
+disblance = pipes['Аварийность'].value_counts()
+print(disblance[1]/disblance[0])
 
-    # Plot the training points
-    for i, color in zip(range(n_classes), plot_colors):
-        idx = np.where(y == i)
-        plt.scatter(X[idx, 0], X[idx, 1], c=color, label=iris.target_names[i],
-                    cmap=plt.cm.RdYlBu, edgecolor='black', s=15)
 
-plt.suptitle("Decision surface of a decision tree using paired features")
-plt.legend(loc='lower right', borderpad=0, handletextpad=0)
-plt.axis("tight")
+"""
+Надземная = 0
+Подземная канальная = 1
+Подземная бесканальная = 2
+Подвальная = 3
+"""
 
-plt.figure()
-#clf = DecisionTreeClassifier().fit(iris.data, iris.target)
-#plot_tree(clf, filled=True)
+"""
+Таргеты:
+
+Без аварии - 0
+Авария - 1
+
+
+"""
+
+#print(pipes2.info())
+
+clmns = list(pipes2.columns[5:24])
+#print(pipes2.info())
+
+cr = clmns + list(pipes2.columns[24:25])
+
+for i in range(len(cr)):
+   print(i, ":", cr[i])
+
+
+sns.heatmap(pipes.corr('kendall'), cmap="seismic", vmin=-1, vmax=1) ;
+
+
+corr = pipes[cr].corr()
+corr.style.background_gradient(cmap='coolwarm').set_precision(2)
+
+new_clmns = list(clmns[1:15])
+for i in new_clmns: print(i)
+cr = new_clmns + list(pipes2.columns[24:25])
+corr = pipes[cr].corr()
+corr.style.background_gradient(cmap='coolwarm').set_precision(2)
+
+X, y = pipes[new_clmns], pipes2['Target']
+
+X_test, y_test = pipes_for_lin_reg[new_clmns], pipes_for_lin_reg2['Target']
+
+sns.violinplot(x='Аварийность', y='Год ввода в эксплуатацию', data=pipes);
+
+pipes['Год ввода в эксплуатацию'].hist();
+
+sns.violinplot(x='Аварийность', y='Шероховатость подающего трубопровода, мм', data=pipes);
+
+ct = pd.crosstab(pipes['Шероховатость подающего трубопровода, мм'], pipes['Аварийность'])
+ct.plot.bar();
+
+ct = pd.crosstab(pipes['Год ввода в эксплуатацию'], pipes['Аварийность'])
+ct.plot.bar();
+
+dt = tree.DecisionTreeClassifier(min_samples_split=450)
+dt.fit(X, y)
+figure(num=None, figsize=(22, 10), dpi=80, facecolor='w', edgecolor='k')
+#feature_names=clmns для вывода названий таблиц
+tree.plot_tree(dt, filled=True, fontsize=10, rounded=True, max_depth=6)
+for i in range(len(clmns)):
+   print(i, ":", clmns[i])
 plt.show()
+
+#предугадывание шанса аварии
+#print(dt.predict_proba([[0.5, 0.5, 2020]])[0])
+
+lr = Ridge().fit(X, y)
+print(lr.coef_)
+print(lr.intercept_)
+
+print(X_test.shape, y_test.shape)
+
+print(lr.score(X, y))
+print(lr.score(X_test, y_test))
+
+gbrt = GradientBoostingClassifier(random_state=0, learning_rate=0.01, max_depth=15)
+gbrt.fit(X, y)
+print(gbrt.score(X, y))
+print(gbrt.score(X_test, y_test))
+
+def plot_feature_importances(model):
+ n_features = X.shape[1]
+ plt.barh(range(n_features), model.feature_importances_, align='center')
+ plt.yticks(np.arange(n_features), new_clmns)
+ plt.xlabel("Важность признака")
+ plt.ylabel("Признак")
+plot_feature_importances(gbrt)
