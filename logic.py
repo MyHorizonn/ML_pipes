@@ -9,10 +9,12 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
         super(MyMainWindow, self).__init__(parent)
         self.setupUi(self)
         self.pushButton.clicked.connect(self.clickButton) #here is where the issue is occurs
+        self.radioButton.setChecked(True)
         self.show()
 
 
     def clickButton(self):
+        type_of_prokld = 0
         arr = []
         arr.append(self.lineEdit)
         arr.append(self.lineEdit_2)
@@ -21,14 +23,46 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
         arr.append(self.lineEdit_5)
         arr.append(self.lineEdit_6)
         arr.append(self.lineEdit_7)
-        arr.append(self.lineEdit_8)
+        if self.radioButton.isChecked():
+            type_of_prokld = 0
+            print(0)
+        elif self.radioButton_2.isChecked():
+            type_of_prokld = 1
+            print(1)
+        elif self.radioButton_3.isChecked():
+            type_of_prokld = 2
+            print(2)
+        elif self.radioButton_4.isChecked():
+            type_of_prokld = 3
+            print(3)
+        arr.append(type_of_prokld)
         arr.append(self.lineEdit_9)
         arr.append(self.lineEdit_10)
         arr.append(self.lineEdit_11)
         arr.append(self.lineEdit_12)
         arr.append(self.lineEdit_13)
         arr.append(self.lineEdit_14)
-        self.lineEdit_15.setText(str(pipes(arr)))
+        ans = pipes(arr)
+        self.lineEdit_15.setText(str(ans))
+        print(ans)
+        self.Clear()
+
+
+    def Clear(self):
+        self.lineEdit.setText("")
+        self.lineEdit_2.setText("")
+        self.lineEdit_3.setText("")
+        self.lineEdit_4.setText("")
+        self.lineEdit_5.setText("")
+        self.lineEdit_6.setText("")
+        self.lineEdit_7.setText("")
+        self.radioButton.setChecked(True)
+        self.lineEdit_9.setText("")
+        self.lineEdit_10.setText("")
+        self.lineEdit_11.setText("")
+        self.lineEdit_12.setText("")
+        self.lineEdit_13.setText("")
+        self.lineEdit_14.setText("")
 
 
 if __name__ == '__main__':

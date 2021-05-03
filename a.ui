@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>606</width>
-    <height>809</height>
+    <height>882</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>730</y>
+      <y>800</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -31,7 +31,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>60</y>
+      <y>20</y>
       <width>371</width>
       <height>17</height>
      </rect>
@@ -43,8 +43,8 @@
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>60</y>
+      <x>400</x>
+      <y>20</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -54,7 +54,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>100</y>
+      <y>60</y>
       <width>371</width>
       <height>17</height>
      </rect>
@@ -66,8 +66,8 @@
    <widget class="QLineEdit" name="lineEdit_2">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>100</y>
+      <x>400</x>
+      <y>60</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -77,7 +77,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>140</y>
+      <y>100</y>
       <width>371</width>
       <height>17</height>
      </rect>
@@ -89,8 +89,8 @@
    <widget class="QLineEdit" name="lineEdit_3">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>140</y>
+      <x>400</x>
+      <y>100</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -100,7 +100,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>180</y>
+      <y>140</y>
       <width>371</width>
       <height>17</height>
      </rect>
@@ -112,8 +112,8 @@
    <widget class="QLineEdit" name="lineEdit_4">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>180</y>
+      <x>400</x>
+      <y>140</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -123,7 +123,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>220</y>
+      <y>180</y>
       <width>371</width>
       <height>17</height>
      </rect>
@@ -135,8 +135,8 @@
    <widget class="QLineEdit" name="lineEdit_5">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>220</y>
+      <x>400</x>
+      <y>180</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -146,7 +146,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>270</y>
+      <y>230</y>
       <width>371</width>
       <height>17</height>
      </rect>
@@ -158,8 +158,8 @@
    <widget class="QLineEdit" name="lineEdit_6">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>270</y>
+      <x>400</x>
+      <y>230</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -168,8 +168,8 @@
    <widget class="QLineEdit" name="lineEdit_7">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>310</y>
+      <x>400</x>
+      <y>270</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -179,7 +179,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>310</y>
+      <y>270</y>
       <width>371</width>
       <height>17</height>
      </rect>
@@ -188,22 +188,12 @@
      <string>Год ввода в эксплуатацию:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_8">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>350</y>
-      <width>113</width>
-      <height>25</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
       <x>30</x>
       <y>350</y>
-      <width>371</width>
+      <width>231</width>
       <height>17</height>
      </rect>
     </property>
@@ -214,8 +204,8 @@
    <widget class="QLineEdit" name="lineEdit_9">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>390</y>
+      <x>400</x>
+      <y>460</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -225,7 +215,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>390</y>
+      <y>460</y>
       <width>371</width>
       <height>17</height>
      </rect>
@@ -237,8 +227,8 @@
    <widget class="QLineEdit" name="lineEdit_10">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>430</y>
+      <x>400</x>
+      <y>500</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -248,7 +238,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>430</y>
+      <y>500</y>
       <width>371</width>
       <height>17</height>
      </rect>
@@ -261,7 +251,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>470</y>
+      <y>540</y>
       <width>371</width>
       <height>17</height>
      </rect>
@@ -273,8 +263,8 @@
    <widget class="QLineEdit" name="lineEdit_11">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>470</y>
+      <x>400</x>
+      <y>540</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -284,7 +274,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>510</y>
+      <y>580</y>
       <width>371</width>
       <height>17</height>
      </rect>
@@ -296,8 +286,8 @@
    <widget class="QLineEdit" name="lineEdit_12">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>510</y>
+      <x>400</x>
+      <y>580</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -307,7 +297,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>550</y>
+      <y>620</y>
       <width>371</width>
       <height>17</height>
      </rect>
@@ -319,8 +309,8 @@
    <widget class="QLineEdit" name="lineEdit_13">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>550</y>
+      <x>400</x>
+      <y>620</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -330,7 +320,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>590</y>
+      <y>660</y>
       <width>371</width>
       <height>17</height>
      </rect>
@@ -342,8 +332,8 @@
    <widget class="QLineEdit" name="lineEdit_14">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>590</y>
+      <x>400</x>
+      <y>660</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -353,7 +343,7 @@
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>680</y>
+      <y>750</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -363,13 +353,65 @@
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>680</y>
+      <y>750</y>
       <width>101</width>
       <height>17</height>
      </rect>
     </property>
     <property name="text">
      <string>Вероятность:</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>310</y>
+      <width>112</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Надземная</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_2">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>340</y>
+      <width>181</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Подземная канальная</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_3">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>370</y>
+      <width>201</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Подземная бесканальная</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_4">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>400</y>
+      <width>112</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Подвальная</string>
     </property>
    </widget>
   </widget>
