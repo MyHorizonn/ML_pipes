@@ -62,5 +62,5 @@ def pipes(arr):
 
    gbrt = GradientBoostingClassifier(random_state=0, learning_rate=0.01, max_depth=15)
    gbrt.fit(X, y)
-   #predict
+   #score
    return(gbrt.score(X_test, y_test))
